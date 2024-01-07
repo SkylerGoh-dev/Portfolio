@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { PerspectiveCamera } from "three";
+import "./App.css";
+import { OrbitControls } from "@react-three/drei";
+import SpinningBox from "./SpinningBox";
+import Title from "./Title";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+function CameraHelper() {
+  const camera = new PerspectiveCamera(75, 1, 3, 100);
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <group position={[0, 0, 0]}>
+      <cameraHelper args={[camera]} />
+    </group>
+  );
 }
 
-export default App
+function Controls() {
+  const {
+    camera,
+    gl: { domElement },
+  } = useThree();
+
+  return <OrbitControls args={[camera, domElement]} />;
+}
+
+function App() {
+  return (
+    //{position: [0,0,10], fov: 90, near: 0.1, far: 1000 }
+    // camera={{position: [0, 0, 0], fov: 75, near: 3, far: 100 }} >
+    <>
+      <Canvas camera={{ position: [0, 0, 0], fov: 75, near: 3, far: 100 }}>
+        <ambientLight />
+        <Controls />
+        <SpinningBox x={6} y={3.5} z={-6.6} size={1} />
+        <SpinningBox x={-6} y={-3.5} z={-7} size={2} />
+        <SpinningBox x={3} y={-2} z={-6.6} size={1} />
+        <CameraHelper />
+      </Canvas>
+    </>
+  );
+}
+
+export default App;
