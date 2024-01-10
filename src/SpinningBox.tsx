@@ -1,11 +1,6 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
-import THREE, {
-  DoubleSide,
-  EdgesGeometry,
-  LineBasicMaterial,
-  Mesh,
-} from "three";
+import { Mesh } from "three";
 
 interface Props {
   x: number;
@@ -35,7 +30,7 @@ function SpinningBox({ x, y, z, size }: Props) {
       <lineBasicMaterial color="0xffffff" />
   <lineSegments geometry={lineGeo} /> */}
       <boxGeometry args={[size, size, size]} />
-      <meshBasicMaterial color={0xff6347} wireframe  />
+      <meshBasicMaterial color={0xff6347} wireframe />
     </mesh>
   );
 }

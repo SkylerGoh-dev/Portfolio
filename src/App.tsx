@@ -1,9 +1,9 @@
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useThree } from "@react-three/fiber";
 import { PerspectiveCamera } from "three";
 import "./App.css";
 import { OrbitControls } from "@react-three/drei";
 import SpinningBox from "./SpinningBox";
-import Title from "./Title";
+//import Title from "./Title";
 
 function CameraHelper() {
   const camera = new PerspectiveCamera(75, 1, 3, 100);
