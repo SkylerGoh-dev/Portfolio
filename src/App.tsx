@@ -8,7 +8,7 @@ import Title from "./Title";
 function CameraHelper() {
   const camera = new PerspectiveCamera(75, 1, 3, 100);
   return (
-    <group position={[0, 0, 0]}>
+    <group position={[0, 0, 5]}>
       <cameraHelper args={[camera]} />
     </group>
   );
@@ -28,7 +28,7 @@ function App() {
     //{position: [0,0,10], fov: 90, near: 0.1, far: 1000 }
     // camera={{position: [0, 0, 0], fov: 75, near: 3, far: 100 }} >
     <>
-      <Canvas camera={{ position: [0, 0, 0], fov: 75, near: 3, far: 100 }}>
+      <Canvas id = "bg" camera={{ position: [0, 0, 5], fov: 75, near: 3, far: 100 }}>
         <ambientLight />
         <Controls />
         <SpinningBox x={6} y={3.5} z={-6.6} size={1} />
