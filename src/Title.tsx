@@ -1,7 +1,15 @@
 function Title() {
-    return <div className = "header">
-        <h1>Welcome to Skyler Goh</h1>
+  const handleMouseMove = () => {
+    
+    
+  };
+  return (
+    <div onMouseMove={handleMouseMove} className="MainTitle">
+      <h2 className="Welcome">WELCOME TO</h2>
+      <br></br>
+      <h1 className="Name">SKYLER GOH</h1>
     </div>
+  );
 }
 
 export default Title;
